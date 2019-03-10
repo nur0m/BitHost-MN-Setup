@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.bithost'
 COIN_DAEMON='bithostd'
 COIN_CLI='bithost-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/nur0m/BitHost/releases/download/v1.0.1.0/bithost-1.0.1.0-linux.tar.gz'
+COIN_TGZ='https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bithost-1.0.2-linux.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='bithost'
 COIN_PORT=29918
@@ -33,6 +33,8 @@ purgeOldInstallation() {
     #remove old files
 	rm -- "$0" > /dev/null 2>&1
 	rm /root/$CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
+	rm /root/$CONFIGFOLDER/peers.dat /root/$CONFIGFOLDER/banlist.dat /root/$CONFIGFOLDER/debug.log /root/$CONFIGFOLDER/.peers_probe > /dev/null 2>&1
+	rm -r /root/$CONFIGFOLDER/blocks /root/$CONFIGFOLDER/chainstate /root/$CONFIGFOLDER/spork /root/$CONFIGFOLDER/zerocoin
 	cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
         sudo rm -rf ~/$CONFIGFOLDER > /dev/null 2>&1
@@ -47,10 +49,13 @@ function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
-  tar xzvf BitHost-.Daemon_Ubuntu_16.04.tar.gz
+  tar xzvf bithost-1.0.2-linux.tar.gz
   cd rev >/dev/null 2>&1
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
+  cd $CONFIGFOLDER >/dev/null 2>&1
+  wget -q https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bih-data.tar.gz
+  tar xzvf bih-data.tar.gz
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
@@ -145,7 +150,6 @@ maxconnections=256
 masternode=1
 externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
-
 EOF
 }
 

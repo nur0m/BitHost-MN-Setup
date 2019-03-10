@@ -267,9 +267,9 @@ function important_information() {
 
 function setup_node() {
   get_ip
-  create_config
-  create_key
-  update_config
+  #create_config
+  #create_key
+  #update_config
   enable_firewall
   important_information
   configure_systemd

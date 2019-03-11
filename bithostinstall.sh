@@ -32,9 +32,9 @@ purgeOldInstallation() {
     sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
 	rm -- "$0" > /dev/null 2>&1
-	rm /root/$CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
-	rm /root/$CONFIGFOLDER/peers.dat /root/$CONFIGFOLDER/banlist.dat /root/$CONFIGFOLDER/debug.log /root/$CONFIGFOLDER/.peers_probe > /dev/null 2>&1
-	rm -r /root/$CONFIGFOLDER/blocks /root/$CONFIGFOLDER/chainstate /root/$CONFIGFOLDER/spork /root/$CONFIGFOLDER/zerocoin
+	rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
+	rm $CONFIGFOLDER/peers.dat $CONFIGFOLDER/banlist.dat $CONFIGFOLDER/debug.log $CONFIGFOLDER/.peers_probe > /dev/null 2>&1
+	rm -r $CONFIGFOLDER/blocks $CONFIGFOLDER/chainstate $CONFIGFOLDER/spork $CONFIGFOLDER/zerocoin
 	cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
         sudo rm -rf ~/$CONFIGFOLDER > /dev/null 2>&1

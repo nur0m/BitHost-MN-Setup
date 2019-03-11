@@ -20,7 +20,7 @@ prompt#: wget -q https://raw.githubusercontent.com/nur0m/BitHost-MN-Setup/master
 
 prompt#: sudo chmod +x bithostinstall-create-config.sh
 
-prompt#: ./bithostinstall-config-create.sh
+prompt#: ./bithostinstall-create-config.sh
 
 When prompted to Enter your bithost Masternode GEN Key.
 

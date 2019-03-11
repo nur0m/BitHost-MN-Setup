@@ -6,11 +6,13 @@ sudo chmod +x bithostinstall.sh
 
 ./bithostinstall.sh
 
-When prompted to Enter your bithost Masternode GEN Key.
+Wait until the script end.
 
-Paster your Masternode GEN Key and press enter
+For start the node:
 
-Wait till Node is fully Synced with blockchain.
+systemctl start bithost.service
+systemctl enable bithost.service
+
 For check enter below command.
 
 bithost-cli getinfo
@@ -18,3 +20,13 @@ bithost-cli getinfo
 When Node Fully Synced enter below command for check masternode status.
 
 bithost-cli masternode status
+
+--------------------------------------
+
+When prompted to Enter your bithost Masternode GEN Key.
+
+Paster your Masternode GEN Key and press enter
+
+Wait till Node is fully Synced with blockchain.
+
+---------------------------------------

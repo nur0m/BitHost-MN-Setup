@@ -35,9 +35,9 @@ purgeOldInstallation() {
 	rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
 	rm $CONFIGFOLDER/peers.dat $CONFIGFOLDER/banlist.dat $CONFIGFOLDER/debug.log $CONFIGFOLDER/.peers_probe > /dev/null 2>&1
 	rm -r $CONFIGFOLDER/blocks $CONFIGFOLDER/chainstate $CONFIGFOLDER/spork $CONFIGFOLDER/zerocoin
-	cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+	#cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-        sudo rm -rf ~/$CONFIGFOLDER > /dev/null 2>&1
+        #sudo rm -rf ~/$CONFIGFOLDER > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     echo -e "${GREEN}* Done${NONE}";
@@ -48,13 +48,13 @@ purgeOldInstallation() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_TGZ
+  wget $COIN_TGZ
   tar xzvf bithost-1.0.2-linux.tar.gz
-  cd rev >/dev/null 2>&1
+  #cd rev >/dev/null 2>&1
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd $CONFIGFOLDER >/dev/null 2>&1
-  wget -q https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bih-data.tar.gz
+  wget https://github.com/nur0m/BitHost/releases/download/v1.0.2.0/bih-data.tar.gz
   tar xzvf bih-data.tar.gz
   cd ~ >/dev/null 2>&1
   rm -rf $TMP_FOLDER >/dev/null 2>&1
